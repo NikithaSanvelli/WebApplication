@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML5 controls</title>
+</head>
+<body>
+<header style="background-color: black; color:white">
+<h1 align="center">Demonstrating HTML5 Controls</h1>
+</header>
+<h3>Video</h3>
+<video  width="500" controls autoplay preload="auto" loop>
+<source src=".\videos\mov_bbb.mp4" type="video/mp4">
+</video>
+
+<h3>SVG using linear gradient</h3>
+<svg width="300" height="150">
+<defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <ellipse cx="100" cy="70" rx="85" ry="55" fill="url(#gradient)"/>
+  <text fill="#ffffff" font-size="45" font-family="Verdana" x="50" y="86">SVG</text>
+  Sorry, your browser does not support inline SVG.
+</svg>
+
+<h3>Canvas</h3>
+<canvas id="myCanvas" width="200" height="200">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+<script>
+var canv = document.getElementById("myCanvas");
+var context = canv.getContext("2d");
+context.font = "30px Verdana";
+context.strokeText("CANVAS!",10,70);
+</script>
+<footer style="background-color: black; color:white">
+<p align="center">contact</p>
+<p align="center"><small>nikithasanvelli@gmail.com</small></p>
+</footer>
+</body>
+</html>
