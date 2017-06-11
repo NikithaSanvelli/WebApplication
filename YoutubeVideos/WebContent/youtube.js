@@ -8,22 +8,30 @@ $(function() {
             part: "snippet",
             type: "video",
             q: encodeURIComponent($("#searchbox").val()).replace(/%20/g, "+"),
+            order: "viewCount"
        }); 
 	   request.execute(function(response) {
 		  console.log(response);
           var results = response.result;
           $("#results").html("");
           $.each(results.items, function(index, item) {
-            $.get(".\item.html", function(data) {
-                $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
+            $.get("./item.html", function(data) {
+             $("#results").append(tplawesome(data, [{"title":item.snippet.title, 
+            	 "videoid":item.id.videoId,
+            	 "channelTitle": item.snippet.channelTitle,
+            	 "description": item.snippet.description,
+            	 "publishedAt": item.snippet.publishedAt
+            	 }]));
             });
           });
           resetVideoHeight();
        });
     });
-    
-    $(window).on("resize", resetVideoHeight);
 });
+
+function resetVideoHeight() {
+    $(".video").css("height", $("#results").width() * 9/16);
+}
 
 function init() {
     gapi.client.setApiKey("AIzaSyCwMJiDR9Aajg5kBfV3hrOBQTG8_wv1eTk");

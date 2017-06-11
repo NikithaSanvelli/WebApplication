@@ -1,3 +1,4 @@
+@CHARSET "ISO-8859-1";
 html { 
   background: url(https://image.freepik.com/free-psd/white-wood-texture-background-design_1022-75.jpg) no-repeat center fixed; 
   background-size: cover;
@@ -34,4 +35,29 @@ input[type="submit"] {
 
 input[type=submit]:hover {
     background-color: #A9A9A9;
+}
+.container {
+    width:1000px;
+}
+.item {
+    width: 250px;
+    height: 138px; 
+    float: left;
+    margin-left: 2%;
+    margin-bottom: 4%;
+}
+.itemcontent {
+    width: 500px;
+    float: left;
+    height: 138px;
+    margin-left:8%; 
+    margin-bottom: 4%; 
+}
+.itemcontent p{
+	font-size:12px;
+	font-family: arial;
+	color: grey;
+}
+.clearfix {
+    clear: both;
 }
