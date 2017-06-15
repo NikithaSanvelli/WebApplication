@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Weather</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style2.css"/>
+ </head>
+ <body>
+ <h1>Weather Forecast</h1>
+  <div id="form">
+  <form action="#">
+   <input id="city" type="text" name="city" placeholder="type city name">
+   <input id="submit" type="submit" value="search">
+  </form>
+  </div>
+  <div id="container">
+	<div id="result2"></div>
+	<div id="clear"></div>
+  </div>
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script>
+   $(function (){
+ $("form").on("submit", function(e) {
+    e.preventDefault();
+	var path = "http://api.openweathermap.org/data/2.5/forecast/daily?q=";
+	var city = $("#city").val();
+	var apikey = "&APPID=2579b2d20738fafc3379fb7b7cbc3c90";
+	var units = "&units=metric";
+	var mode = "&mode=json";
+	var url = path+city+mode+apikey+units;
+	$.getJSON( url, function(json) {
+		if(json.message == "Not Found" || city === '') {
+			$('#result').html("<h2>No User Info Found</h2>");
+		}
+		else {
+		    var data = json.list;
+			var imgpath = "http://openweathermap.org/img/w/";
+			var output = '<h3 class="headername">Weather in '+ city + ', '+json.city.country+ '</h3>';
+			for (var key in data) {
+			if (data.hasOwnProperty(key)) {
+			  var val = data[key];
+			  var icon = val.weather[0].icon;
+			  var imgurl = imgpath + icon + ".png";
+			  <!-- var newElement = document.createElement('div'); -->
+			  <!-- newElement.id = data[key];  -->
+			  <!-- newElement.className = "weatherdata"; -->
+			  <!-- output = output + '<h3>'+ '<img src="'+imgurl+'" alt="weather">'+ ' <span>' + val.main.temp + ' &#8451; </span></h3>'; -->
+			  <!-- output = output + '<p>'+val.weather[0].description+'</p>'; -->
+			  <!-- newElement.innerHTML = output; -->
+			  <!-- document.body.appendChild(newElement); -->
+			  $(val).each(function(i,e){
+			  var dateObj = new Date(1000*val.dt);
+			  var month = dateObj.getMonth()+1;
+			  var date = dateObj.getDate();
+			  var year = dateObj.getFullYear();
+			  var newDate = month +"/"+ date +"/"+ year;
+			   $("#result2").append(
+			    '<div id="result2"><p>'+newDate+'</p><h3><img src="'+imgurl+'" alt="weather"> <span>' + val.temp.day + ' &#8451; </span></h3><P class="maxtemp">'+val.temp.max+' &#8451;</p><p class="mintemp">'+val.temp.min+' &#8451;</p><h5>'+val.weather[0].description+'</h5></div>'
+			   )
+			  });
+			 }
+			}
+		}
+	});
+  });
+ }); 
+  </script>
+ </body>
+</html>

@@ -1,0 +1,57 @@
+h1 {
+ text-align: center;
+ color: #FF7F50;
+}
+#form {
+	width: 400px;
+	margin: 0 42% 2%;
+}
+input[type="text"] {
+	border: 1px solid #FF7F50;
+	padding: 6px;
+}
+input[type="submit"] {
+	background: #FF7F50;
+	border:1px solid #FF7F50;
+	padding: 6px;
+	border-radius: 5px;
+	width: 18%;
+}
+#container {
+	width:100%;
+	display: inline-block;
+}
+.weatherdata {
+	margin-left: 40px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 40%;
+}
+#result2 > div {
+	height: 250px;
+	width: 200px;
+	text-align: center;
+	box-shadow: 5px 5px 10px grey;
+	display: inline-block;
+	padding-right: 10px;
+	margin: 10px;
+	color: #696969;
+	background-color:#DCDCDC;
+}
+.maxtemp{
+	background-color: #FF7F50;
+	border-radius: 5px;
+	width: 100px;
+	padding: 5px;
+	display:inline;
+}
+.mintemp{
+	background-color: #696969;
+	border-radius: 5px;
+	width: 100px;
+	padding: 5px;
+	color: black;
+	display:inline;
+	margin-left: 5px;
+	
+}
